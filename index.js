@@ -179,3 +179,9 @@ function getEmotionsArray(cats) {
   return emotionsArray;
 }
 
+function renderEmotionsRadio(cats) {
+  const emotions = getEmotionsArray(cats);
+  console.log(emotions);
+}
+
+renderEmotionsRadios(catsData);

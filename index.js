@@ -23,10 +23,14 @@ function getMatchingCatsArray() {
     ).value;
     const isGif = gifsOnlyOption.checked;
 
-    const matchingCatsArray = catsData.filter((cat) =>
-      cat.emotionTags.includes(selectedEmotion)
-    );
-    console.log(matchingCatsArray);
+    const matchingCatsArray = catsData.filter(function (cat) {
+      if (isGif) {
+        return cat.emotionTags.includes(selectedEmotion) && cat.isGif;
+      } else {
+        return cat.emotionTags.includes(selectedEmotion);
+      }
+    });
+    return matchingCatsArray;
   }
 }
 

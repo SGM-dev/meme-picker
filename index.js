@@ -17,14 +17,16 @@ function highlightCheckedOption(e) {
 }
 
 function getMatchingCatsArray() {
-  const isGif = gifsOnlyOption.checked;
-  console.log(isGif);
-
   if (document.querySelector("input[type=radio]:checked")) {
     const selectedEmotion = document.querySelector(
       "input[type=radio]:checked"
     ).value;
-    console.log(selectedEmotion);
+    const isGif = gifsOnlyOption.checked;
+
+    const matchingCatsArray = catsData.filter((cat) =>
+      cat.emotionTags.includes(selectedEmotion)
+    );
+    console.log(matchingCatsArray);
   }
 }
 

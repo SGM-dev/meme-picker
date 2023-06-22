@@ -5,12 +5,10 @@ const emotionRadios = document.getElementById("emotion-radios");
 emotionRadios.addEventListener("change", highlightCheckedOption);
 
 function highlightCheckedOption(e) {
-  /*
-Challenge:
-1. highlightCheckedOption should take control 
-   of the selected radio input and add the CSS
-   class of "highlight" to its classlist.
-*/
+  const radiosArray = document.getElementsByClassName("radio");
+  for (let radio of radiosArray) {
+    radio.classList.remove("highlight");
+  }
   document.getElementById(e.target.id).parentElement.classList.add("highlight");
 }
 

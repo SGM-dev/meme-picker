@@ -9,7 +9,20 @@ const memeModalCloseBtn = document.getElementById("meme-modal-close-btn");
 
 emotionRadios.addEventListener("change", highlightCheckedOption);
 
-memeModalCloseBtn.addEventListener("click", closeModal);
+// memeModalCloseBtn.addEventListener("click", closeModal);
+
+window.addEventListener("click", function (event) {
+  if (
+    !(event.target == memeModal) &&
+    !(
+      event.target == getImageBtn ||
+      event.target == memeModalInner ||
+      event.target == this.document.querySelector(".cat-img")
+    )
+  ) {
+    closeModal();
+  }
+});
 
 getImageBtn.addEventListener("click", renderCat);
 

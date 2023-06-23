@@ -9,20 +9,44 @@ const memeModalCloseBtn = document.getElementById("meme-modal-close-btn");
 
 emotionRadios.addEventListener("change", highlightCheckedOption);
 
+memeModalCloseBtn.addEventListener("click", closeModal);
+
 getImageBtn.addEventListener("click", renderCat);
 
-memeModalCloseBtn.addEventListener("click", closeModal);
+function highlightCheckedOption(e) {
+  const radiosArray = document.getElementsByClassName("radio");
+
+  for (let radio of radiosArray) {
+    radio.classList.remove("highlight");
+  }
+
+  document.getElementById(e.target.id).parentElement.classList.add("highlight");
+}
 
 function closeModal() {
   memeModal.style.display = "none";
 }
 
-function highlightCheckedOption(e) {
-  const radiosArray = document.getElementsByClassName("radio");
-  for (let radio of radiosArray) {
-    radio.classList.remove("highlight");
+function renderCat() {
+  const catObject = getSingleCatObject();
+
+  memeModalInner.innerHTML = `<img class="cat-img"
+    src="./images/${catObject.image}"
+    alt="${catObject.alt}"
+  />`;
+
+  memeModal.style.display = "flex";
+}
+
+function getSingleCatObject() {
+  const catsArray = getMatchingCatsArray();
+
+  if (catsArray.length === 1) {
+    return catsArray[0];
+  } else {
+    const randomNum = Math.floor(Math.random() * catsArray.length);
+    return catsArray[randomNum];
   }
-  document.getElementById(e.target.id).parentElement.classList.add("highlight");
 }
 
 function getMatchingCatsArray() {
@@ -39,32 +63,14 @@ function getMatchingCatsArray() {
         return cat.emotionTags.includes(selectedEmotion);
       }
     });
+
     return matchingCatsArray;
   }
 }
 
-function getSingleCatObject() {
-  const catsArray = getMatchingCatsArray();
-
-  if (catsArray.length === 1) {
-    return catsArray[0];
-  } else {
-    const randomNum = Math.floor(Math.random() * catsArray.length);
-    return catsArray[randomNum];
-  }
-}
-
-function renderCat() {
-  const catObject = getSingleCatObject();
-  memeModalInner.innerHTML = `<img class="cat-img"
-    src="./images/${catObject.image}"
-    alt="${catObject.alt}"
-  />`;
-  memeModal.style.display = "flex";
-}
-
 function getEmotionsArray(cats) {
   const emotionsArray = [];
+
   for (let cat of cats) {
     for (let emotion of cat.emotionTags) {
       if (!emotionsArray.includes(emotion)) {
@@ -72,12 +78,14 @@ function getEmotionsArray(cats) {
       }
     }
   }
+
   return emotionsArray;
 }
 
 function renderEmotionsRadios(cats) {
   let radioItems = ``;
   const emotions = getEmotionsArray(cats);
+
   for (let emotion of emotions) {
     radioItems += `
         <div class="radio">
@@ -90,6 +98,7 @@ function renderEmotionsRadios(cats) {
             >
         </div>`;
   }
+
   emotionRadios.innerHTML = radioItems;
 }
 

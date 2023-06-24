@@ -16,7 +16,7 @@ Meme Picker is a web application that allows users to browse and select memes an
 
 ## Installation
 
-To use Meme Picker, open your web browser and visit `https://sgm-dev.github.io/meme-picker/` to access Meme Picker.
+To use Meme Picker, open your web browser and visit [https://sgm-dev.github.io/meme-picker/](https://sgm-dev.github.io/meme-picker/) to access Meme Picker.
 
 ## Technologies Used
 

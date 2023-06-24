@@ -136,15 +136,17 @@ input[type="radio"] {
   justify-content: center;
   border: 1px solid #67595e;
   border-radius: 5px;
-  width: 420px;
-  height: 490px;
+  width: 896px;
+  height: 504px;
   background-color: #fff0ee;
+  flex-wrap: wrap;
+  padding: 5px;
 }
 
 .cat-img {
-  max-width: 340px;
-  max-height: 420px;
+  max-height: 200px;
   border-radius: 5px;
+  gap: 5px;
 }
 
 .meme-modal-close-btn {

@@ -24,7 +24,7 @@ window.addEventListener("click", function (event) {
   }
 });
 
-getImageBtn.addEventListener("click", renderCat);
+getImageBtn.addEventListener("click", renderCats);
 
 function highlightCheckedOption(e) {
   const radiosArray = document.getElementsByClassName("radio");
@@ -48,6 +48,23 @@ function renderCat() {
     alt="${catObject.alt}"
   />`;
 
+  memeModal.style.display = "flex";
+}
+
+function renderCats() {
+  const catObjectsArray = getMatchingCatsArray();
+
+  let memeGallery = ``;
+  for (let catObject of catObjectsArray) {
+    memeGallery += `
+    
+      <img class = "cat-img"
+      src="./images/${catObject.image}"
+      alt=${catObject.alt}
+      />
+    `;
+  }
+  memeModalInner.innerHTML = memeGallery;
   memeModal.style.display = "flex";
 }
 

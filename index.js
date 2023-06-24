@@ -40,17 +40,6 @@ function closeModal() {
   memeModal.style.display = "none";
 }
 
-function renderCat() {
-  const catObject = getSingleCatObject();
-
-  memeModalInner.innerHTML = `<img class="cat-img"
-    src="./images/${catObject.image}"
-    alt="${catObject.alt}"
-  />`;
-
-  memeModal.style.display = "flex";
-}
-
 function renderCats() {
   const catObjectsArray = getMatchingCatsArray();
 
@@ -66,17 +55,6 @@ function renderCats() {
   }
   memeModalInner.innerHTML = memeGallery;
   memeModal.style.display = "flex";
-}
-
-function getSingleCatObject() {
-  const catsArray = getMatchingCatsArray();
-
-  if (catsArray.length === 1) {
-    return catsArray[0];
-  } else {
-    const randomNum = Math.floor(Math.random() * catsArray.length);
-    return catsArray[randomNum];
-  }
 }
 
 function getMatchingCatsArray() {
